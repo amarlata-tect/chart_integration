@@ -1,0 +1,7 @@
+name: 'chart_intigration'
+type: module
+description: 'Provides custom entity to generate the chart.'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - charts

@@ -1,0 +1,4 @@
+services:
+  chart_intigration.parser:
+    class: Drupal\chart_intigration\Parser
+    arguments: ['@entity_type.manager']

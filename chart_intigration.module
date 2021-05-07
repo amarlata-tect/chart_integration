@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * Contains chart_intigration.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Asset\AttachedAssetsInterface;
+/**
+ * Implements hook_help().
+ */
+function chart_intigration_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the chart_intigration module.
+    case 'help.page.chart_intigration':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides custom entity to generate the chart.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function chart_intigration_theme() {
+  $theme = [];
+   $theme['chart_intigration'] = [
+    'render element' => 'children',
+  ];
+  $theme['chart_entity'] = [
+    'render element' => 'elements',
+    'file' => 'chart_entity.page.inc',
+    'template' => 'chart_entity',
+  ];
+  $theme['chart_entity_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'chart_entity.page.inc',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function chart_intigration_theme_suggestions_chart_entity(array $variables) {
+  $suggestions = [];
+  $entity = $variables['elements']['#chart_entity'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'chart_entity__' . $sanitized_view_mode;
+  $suggestions[] = 'chart_entity__' . $entity->bundle();
+  $suggestions[] = 'chart_entity__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'chart_entity__' . $entity->id();
+  $suggestions[] = 'chart_entity__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}
+
+function chart_intigration_preprocess_paragraph(&$variables) {
+  if($variables['paragraph']->getType() == 'cpa_portfolio_chart') {
+
+   /* $entity = \Drupal::entityTypeManager()->getStorage('chart_entity_type')->load(1);
+    dump($entity);
+    dump($variables['content']['field_chart_items']);exit;
+    foreach() {
+
+    }*/
+
+  }
+
+}
+/**
+ * Implements hook_page_attachments().
+ */
+function chart_intigration_js_alter(&$javascript, AttachedAssetsInterface $assets) {
+  if(isset($javascript['modules/contrib/charts/modules/charts_google/js/charts_google.js'])) {
+    $javascript['modules/contrib/charts/modules/charts_google/js/charts_google.js']['data'] =
+      drupal_get_path('module', 'chart_intigration'). '/js/charts_google.js';
+  }
+}

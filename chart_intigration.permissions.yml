@@ -1,0 +1,33 @@
+add chart entity entities:
+  title: 'Create new Chart entity entities'
+
+administer chart entity entities:
+  title: 'Administer Chart entity entities'
+  description: 'Allow to access the administration form to configure Chart entity entities.'
+  restrict access: true
+
+delete chart entity entities:
+  title: 'Delete Chart entity entities'
+
+edit chart entity entities:
+  title: 'Edit Chart entity entities'
+
+view published chart entity entities:
+  title: 'View published Chart entity entities'
+
+view unpublished chart entity entities:
+  title: 'View unpublished Chart entity entities'
+
+view all chart entity revisions:
+  title: 'View all Chart entity revisions'
+
+revert all chart entity revisions:
+  title: 'Revert all Chart entity revisions'
+  description: 'Role requires permission <em>view Chart entity revisions</em> and <em>edit rights</em> for chart entity entities in question or <em>administer chart entity entities</em>.'
+
+delete all chart entity revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Chart entity revisions</em> and <em>delete rights</em> for chart entity entities in question or <em>administer chart entity entities</em>.'
+
+permission_callbacks:
+  - \Drupal\chart_intigration\ChartEntityPermissions::generatePermissions

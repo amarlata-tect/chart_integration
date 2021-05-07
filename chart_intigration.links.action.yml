@@ -1,0 +1,10 @@
+entity.chart_entity.add_form:
+  route_name: entity.chart_entity.add_page
+  title: 'Add Chart entity'
+  appears_on:
+    - entity.chart_entity.collection
+entity.chart_entity_type.add_form:
+  route_name: entity.chart_entity_type.add_form
+  title: 'Add Chart entity type'
+  appears_on:
+    - entity.chart_entity_type.collection

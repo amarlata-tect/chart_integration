@@ -1,0 +1,7 @@
+chart_intigration.importer:
+  path: '/admin/content/chart/importer'
+  defaults:
+    _form: '\Drupal\chart_intigration\Form\ChartEntityImportForm'
+    _title: 'Create chart entity from csv'
+  requirements:
+    _permission: 'add chart entity entities'

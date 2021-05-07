@@ -1,0 +1,17 @@
+
+# Chart entity menu items definition
+entity.chart_entity.collection:
+  title: 'Chart entity list'
+  route_name: entity.chart_entity.collection
+  description: 'List Chart entity entities'
+  parent: system.admin_structure
+  weight: 100
+
+
+# Chart entity type menu items definition
+entity.chart_entity_type.collection:
+  title: 'Chart entity type'
+  route_name: entity.chart_entity_type.collection
+  description: 'List Chart entity type (bundles)'
+  parent: system.admin_structure
+  weight: 99
